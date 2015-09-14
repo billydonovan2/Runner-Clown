@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 2969b2de6bdc947239c583e1e3dec190
+timeCreated: 1438653480
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cenario_0
+    21300002: cenario_1
+    21300004: cenario_2
+    21300006: cenario_3
+    21300008: cenario_4
+    21300010: cenario_5
+    21300012: cenario_6
+    21300014: cenario_7
+    21300016: cenario_8
+    21300018: cenario_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: cenario_0
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1145
+        width: 558
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_1
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 1263
+        width: 541
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_2
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1101
+        width: 548
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_3
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 1051
+        width: 738
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_4
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 368
+        width: 563
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_5
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 376
+        width: 1725
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_6
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 107
+        width: 609
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_7
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 129
+        width: 112
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_8
+      rect:
+        serializedVersion: 2
+        x: 2152
+        y: 141
+        width: 78
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cenario_9
+      rect:
+        serializedVersion: 2
+        x: 2199
+        y: 132
+        width: 172
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
