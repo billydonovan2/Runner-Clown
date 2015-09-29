@@ -28,7 +28,7 @@ public class DistanceCalculator : MonoBehaviour {
 		this.totalTime += Time.deltaTime;
 		if (this.totalTime > this.nextInterval) {
 			this.nextInterval += 1;
-			Debug.Log (this.traveledDistance + " " + this.totalTime);
+			// Debug.Log (this.traveledDistance + " " + this.totalTime);
 		}
 	}
 }

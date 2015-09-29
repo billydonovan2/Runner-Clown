@@ -21,7 +21,7 @@ public class DeployableObject
 	public void Initialize()
 	{
 		this.timeForNext = this.generateRandom (minWait, maxWait);
-		Debug.Log ("Generated random with min:" + this.minWait + " and max:" + this.maxWait + " = " + this.timeForNext);
+		// Debug.Log ("Generated random with min:" + this.minWait + " and max:" + this.maxWait + " = " + this.timeForNext);
 	}
 
 	public bool shoudDeploy()
@@ -53,7 +53,7 @@ public class DeployableObject
 	private int generateRandom(int minWait, int maxWait)
 	{
 		int number = this.randomizer.Next (minWait, maxWait);
-		Debug.Log ("random " + number);
+		// Debug.Log ("random " + number);
 		return number;
 	}
 }

@@ -9,49 +9,67 @@ namespace UnityStandardAssets._2D
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+        private bool m_Shoot;
+        private bool m_WantsToJump;
 
+        public float minSwipeDistY;
 		private Touch initialTouch = new Touch();
 		private float distance = 0;
-
+        private Vector2 startPos;
 
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
+            m_Jump = false;
         }
 
 
         private void Update()
         {
-            if (!m_Jump)
+#if UNITY_ANDROID
+            if (Input.touchCount > 0)
             {
-                // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                Touch myTouch = Input.GetTouch(0);
 
-				if(m_Jump) Debug.Log ("jump");
+                if (myTouch.phase == TouchPhase.Began)
+                {
+                    startPos = myTouch.position;
+                }
+
+                else if (myTouch.phase == TouchPhase.Ended)
+                {
+                    float swipeDistVertical = (new Vector3(0, myTouch.position.y, 0) - new Vector3(0, startPos.y, 0)).magnitude;
+
+                    if (swipeDistVertical > minSwipeDistY)
+                    {
+                        float swipeValue = Mathf.Sign(myTouch.position.y - startPos.y);
+                        if (swipeValue > 0)
+                        {
+                            //up swipe JUMP
+                            m_WantsToJump = true;
+                        }
+                    }
+
+                    else
+                    {
+                        m_Shoot = true;
+                    }
+                }
             }
 
-			/*foreach(Touch t in Input.touches)
-			{
-				if (t.phase == TouchPhase.Began)
-				{
-					initialTouch = t;
-				}
-				else if (t.phase == TouchPhase.Moved && !m_Jump)
-				{
-					float distance = initialTouch.position.y - t.position.y;
 
-					if (distance > 100f)
-					{						
-						m_Jump = true;
-					}
-					
-				}
-				else if (t.phase == TouchPhase.Ended)
-				{
-					initialTouch = new Touch();
-				}
-			}*/
+#else
+			m_WantsToJump = CrossPlatformInputManager.GetButtonDown("Jump");
+			m_Shoot = CrossPlatformInputManager.GetButtonDown("Fire1");
+#endif
 
+            if (!m_Jump && m_WantsToJump)
+            {
+                // Debug.Log("Jump");
+
+                m_Jump = true;
+                m_WantsToJump = false;
+            }
         }
 
 
@@ -61,9 +79,13 @@ namespace UnityStandardAssets._2D
             //bool crouch = Input.GetKey(KeyCode.LeftControl);
 			bool crouch = false;
 
-            // float h = CrossPlatformInputManager.GetAxis("Horizontal");
             // Pass all parameters to the character control script.
+            if (m_Jump)
+            {
+                Debug.Log("Jump");
+            }
             m_Character.Move(1, crouch, m_Jump);
+
             m_Jump = false;
         }
     }
