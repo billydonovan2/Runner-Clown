@@ -8,6 +8,7 @@ namespace UnityStandardAssets._2D
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
+        private WeaponController m_Weapon;
         private bool m_Jump;
         private bool m_Shoot;
         private bool m_WantsToJump;
@@ -20,6 +21,8 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
+            m_Weapon = GetComponentInChildren<WeaponController>();
+            
             m_Jump = false;
         }
 
@@ -69,6 +72,11 @@ namespace UnityStandardAssets._2D
 
                 m_Jump = true;
                 m_WantsToJump = false;
+            }
+
+            if (m_Shoot)
+            {
+                m_Weapon.Attack();
             }
         }
 
