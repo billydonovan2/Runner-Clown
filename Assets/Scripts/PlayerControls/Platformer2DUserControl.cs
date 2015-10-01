@@ -77,6 +77,7 @@ namespace UnityStandardAssets._2D
             if (m_Shoot)
             {
                 m_Weapon.Attack();
+                m_Shoot = false;
             }
         }
 
