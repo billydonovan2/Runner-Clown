@@ -3,9 +3,7 @@
 public class GameOverManager : MonoBehaviour
 {
     Animator anim;
-    bool isGameOver = false;
-    float restartTimer = 0;
-    float restartDelay = 5.0f;
+    public bool isGameOver = false;
 
 
     void Awake()
@@ -21,6 +19,7 @@ public class GameOverManager : MonoBehaviour
             // ... tell the animator the game is over.
             anim.SetTrigger ("GameOver");
             
+            /*
             // .. increment a timer to count up to restarting.
             restartTimer += Time.deltaTime;
             
@@ -30,12 +29,8 @@ public class GameOverManager : MonoBehaviour
                 // .. then reload the currently loaded level.
                 restartLevel();
             }
+             */
         }
-    }
-
-    public void restartLevel()
-    {
-        Application.LoadLevel(Application.loadedLevel);
     }
 
 
