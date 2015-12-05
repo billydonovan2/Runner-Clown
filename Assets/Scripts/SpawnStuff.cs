@@ -63,7 +63,8 @@ public class SpawnStuff : MonoBehaviour {
 
     public DeployableObject coins;
     public DeployableObject obstacles;
-    public DeployableObject enemies;
+    public DeployableObject groundEnemies;
+    public DeployableObject flyingEnemies;
 
     // Use this for initialization
     void Start () {
@@ -75,7 +76,8 @@ public class SpawnStuff : MonoBehaviour {
     void Update () {
         if (this.coins.shoudDeploy ()) return;
         if (this.obstacles.shoudDeploy()) return;
-        if (this.enemies.shoudDeploy()) return;
+        if (this.groundEnemies.shoudDeploy()) return;
+        if (this.flyingEnemies.shoudDeploy()) return;
     }
 }
 

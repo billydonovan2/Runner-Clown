@@ -4,11 +4,16 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
 	public static int score;
-	Text text;
+	public GameObject textUI;
+	public AudioClip coinSound;
+	public AudioSource source;
+	
+	private static Text text;
+	
 
 	void Awake()
 	{
-		text = GetComponent<Text> ();
+		text = textUI.GetComponent<Text> ();
 		score = 0;
 	}
 	
@@ -21,4 +26,14 @@ public class ScoreManager : MonoBehaviour {
 	{
 		ScoreManager.score += amount;
 	}
+	
+	void OnTriggerEnter2D(Collider2D other)
+    {
+		if (other.gameObject.tag == "Coin25")
+		{
+			source.PlayOneShot(coinSound, 1f);
+			ScoreManager.IncreaseScore(25);
+			Destroy(other.gameObject);
+		}
+    }
 }
