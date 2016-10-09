@@ -2,38 +2,56 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScoreManager : MonoBehaviour {
-	public static int score;
+public class ScoreManager : Singleton<ScoreManager> {
+	public int score;
 	public GameObject textUI;
 	public AudioClip coinSound;
 	public AudioSource source;
 	
+	private PlayerInfo playerInfo;
 	private static Text text;
-	
 
 	void Awake()
 	{
+		Debug.Log("Loading ScoreManager");
+		
+		playerInfo = PlayerInfo.Instance;
+		playerInfo.LoadPlayerInfo();
+		
 		text = textUI.GetComponent<Text> ();
-		score = 0;
+		score = playerInfo.coins;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = "Score: " + score;
+		text.text = "" + score;
 	}
 
 	public static void IncreaseScore(int amount)
 	{
-		ScoreManager.score += amount;
+		ScoreManager sm = ScoreManager.Instance;
+		
+		sm.source.PlayOneShot(sm.coinSound, 1f);
+		sm.score += amount;
+		
+		sm.playerInfo.coins = sm.score;
+		sm.playerInfo.SavePlayerInfo();
 	}
 	
-	void OnTriggerEnter2D(Collider2D other)
-    {
-		if (other.gameObject.tag == "Coin25")
-		{
-			source.PlayOneShot(coinSound, 1f);
-			ScoreManager.IncreaseScore(25);
-			Destroy(other.gameObject);
-		}
-    }
+	public static void DecreaseScore(int amount)
+	{
+		ScoreManager sm = ScoreManager.Instance;
+		
+		sm.source.PlayOneShot(sm.coinSound, 1f);
+		sm.score -= amount;
+		
+		sm.playerInfo.coins = sm.score;
+		sm.playerInfo.SavePlayerInfo();
+	}
+	
+	public static int GetCurrentCoins()
+	{
+		ScoreManager sm = ScoreManager.Instance;
+		return sm.score;
+	}
 }

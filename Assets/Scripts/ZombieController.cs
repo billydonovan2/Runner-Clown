@@ -4,6 +4,7 @@ using System.Collections;
 public class ZombieController : MonoBehaviour {
     public float velocity = 1;
 	public AudioClip deathSound;
+	public bool PlaySound;
 	
 	private bool colliderEnable = true;
 	private Animator m_Anim;
@@ -29,7 +30,7 @@ public class ZombieController : MonoBehaviour {
 		rb.constraints = RigidbodyConstraints2D.FreezePositionY;
 		GetComponent<Collider2D>().isTrigger = true;
 		
-		SoundManager.playEffect(deathSound);
+		if (PlaySound) SoundManager.playEffect(deathSound);
 		m_Anim.SetBool("isDead", true);
 		
 		Invoke("DestroyThisObject", 1.0f);
@@ -39,10 +40,5 @@ public class ZombieController : MonoBehaviour {
 	void DestroyThisObject()
 	{
 		Destroy(this.gameObject);
-	}
-	
-	void OnDestroy()
-	{
-		
 	}
 }

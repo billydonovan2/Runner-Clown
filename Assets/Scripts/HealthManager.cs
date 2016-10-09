@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class HealthManager : MonoBehaviour {
     public float maxHealth = 100;
+    
     public Slider healthSlider;
     public float healthIncreaseTimeInterval;
     public float healthIncreaseOverTime;
@@ -13,12 +15,26 @@ public class HealthManager : MonoBehaviour {
     private float health;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
+        PlayerInfo pi = PlayerInfo.Instance;
+        pi.LoadPlayerInfo();
+        
+        this.maxHealth = this.maxHealth + (25 * Convert.ToInt32(pi.storeHealth[0]))
+                                        + (25 * Convert.ToInt32(pi.storeHealth[1]))
+                                        + (25 * Convert.ToInt32(pi.storeHealth[2]));
+        
+        this.healthIncreaseTimeInterval = this.healthIncreaseTimeInterval - (.25f * Convert.ToInt32(pi.storeHealthRegen[0]))
+                                                                          - (.25f * Convert.ToInt32(pi.storeHealthRegen[1]))
+                                                                          - (.50f * Convert.ToInt32(pi.storeHealthRegen[2]));
+        
+        
         this.fillColor = healthSlider.GetComponentInChildren<UnityEngine.UI.Image>();
         this.fillColor.color = Color.green;
         this.health = maxHealth;
         
-        timeBeforeIncreaseSpeed = healthIncreaseTimeInterval;
+        this.timeBeforeIncreaseSpeed = this.healthIncreaseTimeInterval;
+        
+        Debug.Log("Mex Health is: " + this.health);
     }
     
     void Update()
@@ -52,7 +68,7 @@ public class HealthManager : MonoBehaviour {
         return healthPercentage;
     }
 
-    void decreaseHealth(int amount)
+    public void decreaseHealth(int amount)
     {
         this.health -= amount;
     }

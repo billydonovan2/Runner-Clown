@@ -26,10 +26,10 @@ public class DeployableObject
 
     public bool shoudDeploy()
     {
-        if (this.timeForNext < 0) {
-            this.deploy ();
-            return true;
-        }
+         if (this.timeForNext < 0) {
+             this.deploy ();
+             return true;
+         }
 
         this.timeForNext -= Time.deltaTime;		
         return false;
